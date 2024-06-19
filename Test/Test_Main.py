@@ -33,7 +33,13 @@ def test_suma_parametros(input_x, input_y, expected):
 	assert suma(input_x, input_y) == expected
 
 def test_login_pasado():
-	assert login("Bredalis", "12345")
+	nombre_usuario = "Bredalis" 
+	contraseña ="12345"
+
+	assert login(nombre_usuario, contraseña)
 
 def test_login_fallado():
-	assert not login("Angelica", "1234567")
+	nombre_usuario = "Angelica" 
+	contraseña ="1234567"
+
+	assert not login(nombre_usuario, contraseña)
