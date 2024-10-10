@@ -1,5 +1,5 @@
 
-# Librerias para modificar la ruta
+# Librerías para modificar la ruta
 
 import sys
 import os
