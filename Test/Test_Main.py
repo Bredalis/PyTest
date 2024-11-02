@@ -1,22 +1,21 @@
 
 # Librerías para modificar la ruta
-
 import sys
-import os
+from pathlib import Path
 
-# Insertar el directorio principal del archivo actual
-sys.path.insert(0, os.path.abspath(os.path.join(
-	os.path.dirname(__file__), "..")))
+# Insertar el directorio principal del archivo a testear
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-# Libreria para testing
-
+# Librería para testing
 import pytest
 from main import suma, mayor_que, login
 
 def test_suma():
+	"""Prueba la función suma."""
 	assert suma(2, 5) == 7
 
 def test_mayor_que():
+	"""Prueba la función mayor_que."""
 	assert mayor_que(6, 5)
 
 @pytest.mark.parametrize(
@@ -30,16 +29,19 @@ def test_mayor_que():
 )
 
 def test_suma_parametros(input_x, input_y, expected):
+	"""Prueba la función suma con parámetros variados."""
 	assert suma(input_x, input_y) == expected
 
-def test_login_pasado():
+def test_login_exitoso():
+	"""Prueba el inicio de sesión exitoso."""
 	nombre_usuario = "Bredalis" 
-	contraseña ="12345"
+	contrasena ="12345"
 
-	assert login(nombre_usuario, contraseña)
+	assert login(nombre_usuario, contrasena)
 
-def test_login_fallado():
+def test_login_fallido():
+	"""Prueba el inicio de sesión fallido."""
 	nombre_usuario = "Angelica" 
-	contraseña ="1234567"
+	contrasena ="1234567"
 
-	assert not login(nombre_usuario, contraseña)
+	assert not login(nombre_usuario, contrasena)
